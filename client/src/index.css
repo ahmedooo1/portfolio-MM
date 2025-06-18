@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(60, 4.8%, 95.9%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(24, 71%, 32%);
+  --primary-foreground: hsl(60, 9.1%, 97.8%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(43, 74%, 66%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Wood-inspired colors */
+  --wood-primary: hsl(24, 71%, 32%);
+  --wood-secondary: hsl(210, 29%, 24%);
+  --wood-accent: hsl(43, 74%, 66%);
+  --wood-copper: hsl(30, 59%, 53%);
+  --wood-cream: hsl(60, 4.8%, 95.9%);
+  --wood-dark: hsl(20, 50%, 15%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(24, 71%, 32%);
+  --primary-foreground: hsl(60, 9.1%, 97.8%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(43, 74%, 66%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-wood-cream text-wood-secondary;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .font-heading {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .image-overlay {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .image-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(139, 69, 19, 0.8), rgba(218, 165, 32, 0.6));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+
+  .image-overlay:hover::before {
+    opacity: 1;
+  }
+
+  .image-overlay .overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+
+  .image-overlay:hover .overlay-content {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .text-wood-primary {
+    color: var(--wood-primary);
+  }
+  
+  .text-wood-secondary {
+    color: var(--wood-secondary);
+  }
+  
+  .text-wood-accent {
+    color: var(--wood-accent);
+  }
+  
+  .text-wood-copper {
+    color: var(--wood-copper);
+  }
+  
+  .bg-wood-primary {
+    background-color: var(--wood-primary);
+  }
+  
+  .bg-wood-secondary {
+    background-color: var(--wood-secondary);
+  }
+  
+  .bg-wood-accent {
+    background-color: var(--wood-accent);
+  }
+  
+  .bg-wood-copper {
+    background-color: var(--wood-copper);
+  }
+  
+  .bg-wood-cream {
+    background-color: var(--wood-cream);
+  }
+  
+  .bg-wood-dark {
+    background-color: var(--wood-dark);
+  }
+  
+  .border-wood-accent {
+    border-color: var(--wood-accent);
+  }
+}
